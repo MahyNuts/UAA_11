@@ -1,0 +1,14 @@
+H:\Cryptage\Cryptage\Cryptage\bin\Debug\netcoreapp3.1\Cryptage.exe
+H:\Cryptage\Cryptage\Cryptage\bin\Debug\netcoreapp3.1\Cryptage.deps.json
+H:\Cryptage\Cryptage\Cryptage\bin\Debug\netcoreapp3.1\Cryptage.runtimeconfig.json
+H:\Cryptage\Cryptage\Cryptage\bin\Debug\netcoreapp3.1\Cryptage.runtimeconfig.dev.json
+H:\Cryptage\Cryptage\Cryptage\bin\Debug\netcoreapp3.1\Cryptage.dll
+H:\Cryptage\Cryptage\Cryptage\bin\Debug\netcoreapp3.1\Cryptage.pdb
+H:\Cryptage\Cryptage\Cryptage\obj\Debug\netcoreapp3.1\Cryptage.csproj.AssemblyReference.cache
+H:\Cryptage\Cryptage\Cryptage\obj\Debug\netcoreapp3.1\Cryptage.GeneratedMSBuildEditorConfig.editorconfig
+H:\Cryptage\Cryptage\Cryptage\obj\Debug\netcoreapp3.1\Cryptage.AssemblyInfoInputs.cache
+H:\Cryptage\Cryptage\Cryptage\obj\Debug\netcoreapp3.1\Cryptage.AssemblyInfo.cs
+H:\Cryptage\Cryptage\Cryptage\obj\Debug\netcoreapp3.1\Cryptage.csproj.CoreCompileInputs.cache
+H:\Cryptage\Cryptage\Cryptage\obj\Debug\netcoreapp3.1\Cryptage.dll
+H:\Cryptage\Cryptage\Cryptage\obj\Debug\netcoreapp3.1\Cryptage.pdb
+H:\Cryptage\Cryptage\Cryptage\obj\Debug\netcoreapp3.1\Cryptage.genruntimeconfig.cache
