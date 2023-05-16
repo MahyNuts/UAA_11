@@ -9,8 +9,8 @@ namespace Cryptage
         public void RetireEspace(string chaine, out string chaineSSEsp)
         {
             chaineSSEsp = "";
-            int lg = chaineSSEsp.Length;
-            for(int i = 0; i < lg; i++)
+            int lg = chaine.Length;
+            for (int i = 0; i < lg; i++)
             {
                 if (chaine[i] != ' ')
                 {
@@ -18,7 +18,7 @@ namespace Cryptage
                 }
             }
         }
-        
+
         public void DimensionneMat(string cle, string texte, out char[,] matrice)
         {
             int d1 = (texte.Length / cle.Length) + 2;
@@ -32,12 +32,12 @@ namespace Cryptage
 
         public void EcritChainesDansMat(string cle, string texte, ref char[,] matrice)
         {
-            for(int j = 0; j < matrice.GetLength(1); j++)
+            for (int j = 0; j < matrice.GetLength(1); j++)
             {
                 matrice[0, j] = cle[j];
             }
             int k = 0;
-            for(int i = 2; i < matrice.GetLength(0); i++)
+            for (int i = 2; i < matrice.GetLength(0); i++)
             {
                 int j = 0;
                 do
@@ -51,35 +51,41 @@ namespace Cryptage
 
         public void triLigne1(ref char[,] matrice)
         {
-            bool permut;
-            do
+            int n = matrice.GetLength(1);
+            int EC = n / 2;
+            while (EC >= 1)
             {
-                permut = false;
-                for (int i = 0; i < matrice.GetLength(1); i++)
+                bool permut = false;
+                do
                 {
-                    if (matrice[0, i] > matrice[0, i + 1])
+                    permut = false;
+                    for (int i = 0; i <= n - 1 - EC; i++)
                     {
-                        char varEch = matrice[0, 1];
-                        matrice[0, 1] = matrice[0, i + 1];
-                        matrice[0, i + 1] = varEch;
-                        permut = false;
+                        if (matrice[0, i] > matrice[0, i + EC])
+                        {
+                            char tampon = matrice[0, i];
+                            matrice[0, i] = matrice[0, i + EC];
+                            matrice[0, i + EC] = tampon;
+                            permut = true;
+                        }
                     }
-                }
-            } while (permut == true);
+                } while (permut);
+                EC = EC / 2;
+            }
         }
 
         public void ClasseCle(string cle, out char[,] mttri)
         {
             mttri = new char[3, cle.Length];
-            for(int j = 0; j<mttri.GetLength(1); j++)
+            for (int j = 0; j < mttri.GetLength(1); j++)
             {
                 mttri[0, j] = cle[j];
                 mttri[2, j] = '0';
             }
             triLigne1(ref mttri);
-            for(int j = 1; j < mttri.GetLength(1); j++)
+            for (int j = 0; j < mttri.GetLength(1); j++)
             {
-                mttri[1, j - 1] = char.Parse(j.ToString());
+                mttri[1, j] = char.Parse((j + 1).ToString());
             }
         }
 
@@ -89,11 +95,11 @@ namespace Cryptage
             {
                 bool trouve = false;
                 int j = 0;
-                while(trouve = false && j < mttri.GetLength(1))
+                while (trouve == false && j < mttri.GetLength(1))
                 {
-                    if (matrice[0,1] == mttri[0,j] && mttri[2,j] != '1')
+                    if (matrice[0, i] == mttri[0, j] && mttri[2, j] != '1')
                     {
-                        matrice[i, j] = mttri[1, j];
+                        matrice[1, i] = mttri[1, j];
                         mttri[2, j] = '1';
                         trouve = true;
                     }
@@ -102,19 +108,61 @@ namespace Cryptage
             }
         }
 
+        public int charToInt(char c)
+        {
+            int i;
+            switch (c)
+            {
+                case '0':
+                    i = 0;
+                    break;
+                case '1':
+                    i = 1;
+                    break;
+                case '2':
+                    i = 2;
+                    break;
+                case '3':
+                    i = 3;
+                    break;
+                case '4':
+                    i = 4;
+                    break;
+                case '5':
+                    i = 5;
+                    break;
+                case '6':
+                    i = 6;
+                    break;
+                case '7':
+                    i = 7;
+                    break;
+                case '8':
+                    i = 8;
+                    break;
+                case '9':
+                    i = 9;
+                    break;
+                default:
+                    i = -1;
+                    break;
+            }
+            return i;
+        }
+
         public void RealiseCrypt(char[,] matrice, out string chaineCrypt)
         {
             int i = 1;
             chaineCrypt = "";
-            while (i < matrice.GetLength(1))
+            while (i <= matrice.GetLength(1))
             {
                 bool trouve = false;
                 int j = 0;
                 while (!trouve && j < matrice.GetLength(1))
                 {
-                    if(i == matrice[1, j])
+                    if (i == charToInt(matrice[1, j]))
                     {
-                        for(int k = 2; k < matrice.GetLength(0); k++)
+                        for (int k = 2; k < matrice.GetLength(0); k++)
                         {
                             chaineCrypt += matrice[k, j];
                         }
@@ -123,8 +171,8 @@ namespace Cryptage
                         i = i + 1;
                     }
                     j = j + 1;
-                } 
-            } 
+                }
+            }
         }
     }
 }
